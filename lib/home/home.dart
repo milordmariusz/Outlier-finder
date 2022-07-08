@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/home_bloc.dart';
@@ -13,25 +12,26 @@ class HomePage extends StatelessWidget {
       create: (context) => HomeBloc(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Finding Outlier"),
+          title: const Text("Finding Outlier"),
         ),
         body: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
           if (state is HomeInitial) {
             return Column(
               children: [
                 TextField(
-                  decoration: InputDecoration(
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Password',
+                    labelText: 'Input array',
                   ),
-                  onSubmitted: (value) =>
-                      BlocProvider.of<HomeBloc>(context).add(FindOutlierEvent()),
+                  onSubmitted: (value) => BlocProvider.of<HomeBloc>(context)
+                      .add(FindOutlierEvent(value)),
                 )
               ],
             );
           }
           if (state is HomeLoadingState) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -41,9 +41,9 @@ class HomePage extends StatelessWidget {
               children: [
                 Text(state.outlier.toString()),
                 ElevatedButton(
-                    onPressed: () =>
-                        BlocProvider.of<HomeBloc>(context).add(BackButtonPressedEvent()),
-                    child: Text("Back"))
+                    onPressed: () => BlocProvider.of<HomeBloc>(context)
+                        .add(BackButtonPressedEvent()),
+                    child: const Text("Back"))
               ],
             ));
           }

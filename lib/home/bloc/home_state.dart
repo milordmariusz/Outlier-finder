@@ -15,7 +15,7 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeLoadedState extends HomeState{
-  final int outlier;
+  final String outlier;
 
   HomeLoadedState(this.outlier);
 

@@ -10,12 +10,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<FindOutlierEvent>((event, emit) {
       emit(HomeLoadingState());
-      //TODO funkcja szukająca
-      emit(HomeLoadedState(5));
+      final outlier = FindOutlier(event.array);
+      emit(HomeLoadedState("pies"));
     });
 
     on<BackButtonPressedEvent>((event,emit){
       emit(HomeInitial());
     });
   }
+}
+
+String FindOutlier(String array){
+  List<String> arrayWithOutlier = array.split(",");
+  arrayWithOutlier.forEach((number) {
+    print(number);
+  });
+  return "pies";
 }
