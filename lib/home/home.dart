@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-          if (state is HomeLoadedState) {
+          if (state is OutlierFoundState) {
             return Center(
                 child: Column(
               children: [

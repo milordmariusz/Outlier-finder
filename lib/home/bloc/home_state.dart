@@ -14,11 +14,20 @@ class HomeLoadingState extends HomeState {
   List<Object> get props => [];
 }
 
-class HomeLoadedState extends HomeState{
+class OutlierFoundState extends HomeState{
   final String outlier;
 
-  HomeLoadedState(this.outlier);
+  OutlierFoundState(this.outlier);
 
   @override
   List<Object?> get props => [outlier];
+}
+
+class OutlierNotFoundState extends HomeState{
+  final String message;
+
+  OutlierNotFoundState(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }
