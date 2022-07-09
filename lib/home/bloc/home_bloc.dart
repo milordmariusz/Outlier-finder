@@ -36,7 +36,7 @@ String findOutlier(String array) {
   for (var arrayNumber in arrayWithOutlier) {
     number = int.tryParse(arrayNumber);
     if (number == null) {
-      return "Invalid data";
+      return "Nieprawidłowe dane";
     }
 
     if (number % 2 == 0) {
@@ -48,12 +48,12 @@ String findOutlier(String array) {
     }
 
     if (numberOfEven > 1 && numberOfOdd > 1) {
-      return "There is more than one outlier";
+      return "Istnieje więcej niż jedna odstająca wartość";
     }
   }
 
   if ((numberOfEven == 0 || numberOfOdd == 0) || numberOfEven == numberOfOdd) {
-    return "There is no outlier";
+    return "Wartość odstająca nie istnieje";
   }
 
   if (numberOfEven < numberOfOdd) {

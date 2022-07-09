@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
           appBar: AppBar(
             title: const Center(
               child: Text(
-                "Finding Outlier",
+                "Wykrywanie wartości odstającej",
                 style: TextStyle(color: Colors.white),
               ),
             ),
