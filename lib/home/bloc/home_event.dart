@@ -7,7 +7,7 @@ abstract class HomeEvent extends Equatable {
 class FindOutlierEvent extends HomeEvent{
   final String array;
 
-  FindOutlierEvent(this.array);
+  const FindOutlierEvent(this.array);
 
   @override
   List<Object?> get props => [];

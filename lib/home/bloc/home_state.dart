@@ -17,7 +17,7 @@ class HomeLoadingState extends HomeState {
 class OutlierFoundState extends HomeState{
   final String outlier;
 
-  OutlierFoundState(this.outlier);
+  const OutlierFoundState(this.outlier);
 
   @override
   List<Object?> get props => [outlier];
@@ -26,7 +26,7 @@ class OutlierFoundState extends HomeState{
 class OutlierNotFoundState extends HomeState{
   final String message;
 
-  OutlierNotFoundState(this.message);
+  const OutlierNotFoundState(this.message);
 
   @override
   List<Object?> get props => [message];

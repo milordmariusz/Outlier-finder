@@ -11,7 +11,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<FindOutlierEvent>((event, emit) {
       emit(HomeLoadingState());
-      final result = FindOutlier(event.array);
+      final result = findOutlier(event.array);
 
       if (int.tryParse(result) is int) {
         emit(OutlierFoundState(result));
@@ -26,7 +26,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 }
 
-String FindOutlier(String array) {
+String findOutlier(String array) {
   List<String> arrayWithOutlier = array.split(",");
   int? number;
   int numberOfEven = 0;
@@ -52,7 +52,7 @@ String FindOutlier(String array) {
     }
   }
 
-  if (numberOfEven == 0 || numberOfOdd == 0) {
+  if ((numberOfEven == 0 || numberOfOdd == 0) || numberOfEven == numberOfOdd) {
     return "There is no outlier";
   }
 
