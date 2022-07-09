@@ -11,8 +11,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<FindOutlierEvent>((event, emit) {
       emit(HomeLoadingState());
-      final outlier = FindOutlier(event.array);
-      emit(OutlierFoundState(outlier));
+      final result = FindOutlier(event.array);
+
+      if (int.tryParse(result) is int) {
+        emit(OutlierFoundState(result));
+      } else {
+        emit(OutlierNotFoundState(result));
+      }
     });
 
     on<BackButtonPressedEvent>((event, emit) {
@@ -31,7 +36,7 @@ String FindOutlier(String array) {
   for (var arrayNumber in arrayWithOutlier) {
     number = int.tryParse(arrayNumber);
     if (number == null) {
-      return "Wrong input data";
+      return "Invalid data";
     }
 
     if (number % 2 == 0) {
@@ -45,12 +50,15 @@ String FindOutlier(String array) {
     if (numberOfEven > 1 && numberOfOdd > 1) {
       return "There is more than one outlier";
     }
-    print(number);
   }
 
-  if(numberOfEven<numberOfOdd){
+  if (numberOfEven == 0 || numberOfOdd == 0) {
+    return "There is no outlier";
+  }
+
+  if (numberOfEven < numberOfOdd) {
     return evenOutlier.toString();
-  }else{
+  } else {
     return oddOutlier.toString();
   }
 }
