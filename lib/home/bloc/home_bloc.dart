@@ -9,9 +9,9 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
-    on<FindOutlierEvent>((event, emit) {
+    on<FindOutlierEvent>((event, emit) async {
       emit(HomeLoadingState());
-      final result = findOutlier(event.array);
+      final result = await findOutlier(event.array);
 
       if (int.tryParse(result) is int) {
         emit(OutlierFoundState(result));
@@ -26,7 +26,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 }
 
-String findOutlier(String array) {
+Future<String> findOutlier(String array) {
   List<String> arrayWithOutlier = array.split(",");
   int? number;
   int numberOfEven = 0;
@@ -36,7 +36,7 @@ String findOutlier(String array) {
   for (var arrayNumber in arrayWithOutlier) {
     number = int.tryParse(arrayNumber);
     if (number == null) {
-      return "Nieprawidłowe dane";
+      return Future.value("Nieprawidłowe dane");
     }
 
     if (number % 2 == 0) {
@@ -48,17 +48,17 @@ String findOutlier(String array) {
     }
 
     if (numberOfEven > 1 && numberOfOdd > 1) {
-      return "Istnieje więcej niż jedna wartość odstająca";
+      return Future.value("Zbiór nie posiada jednej wartości odstającej");
     }
   }
 
   if ((numberOfEven == 0 || numberOfOdd == 0) || numberOfEven == numberOfOdd) {
-    return "Wartość odstająca nie istnieje";
+    return Future.value("Wartość odstająca nie istnieje");
   }
 
   if (numberOfEven < numberOfOdd) {
-    return evenOutlier.toString();
+    return Future.value(evenOutlier.toString());
   } else {
-    return oddOutlier.toString();
+    return Future.value(oddOutlier.toString());
   }
 }
