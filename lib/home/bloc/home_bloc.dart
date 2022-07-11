@@ -48,7 +48,7 @@ String findOutlier(String array) {
     }
 
     if (numberOfEven > 1 && numberOfOdd > 1) {
-      return "Istnieje więcej niż jedna odstająca wartość";
+      return "Istnieje więcej niż jedna wartość odstająca";
     }
   }
 
