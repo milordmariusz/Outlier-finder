@@ -1,16 +1,11 @@
-# even_and_odd
+# Outlier Finder
 
-A new Flutter project.
+<p float="left">
+  <img src="/ss1.png" width="250" />
+  <img src="/ss2.png" width="250" />
+</p>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The program is used to find outlier in a set of numbers. If the set consists of even numbers and 
+one odd value, the algorithm will return a value that does not match the rest, 
+which in this case is an odd number.
+The program was created using the BLoC pattern.
